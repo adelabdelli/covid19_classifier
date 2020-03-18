@@ -1,1 +1,2 @@
-# covid19_classifier
+# CoViD-19 Classifier
+
