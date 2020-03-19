@@ -1,5 +1,7 @@
 # CoViD-19 Classifier
 
+![COVID-19!](https://www.fda.gov/files/styles/featured_content_background_image/public/FoodProductsCOVID19_1600x900_0.jpg?itok=b1maF8cv)
+
 
 In this repository, i will show you how to automatically detect COVID-19 in X-ray images dataset using Deep Learning (Convolutional Neural Network).
 The dataset contains X-ray images, 25 normal and 25 with covid-19 case. The used dataset is from a tutorial of  [PyImagesSearch](https://www.pyimagesearch.com/2020/03/16/detecting-covid-19-in-x-ray-images-with-keras-tensorflow-and-deep-learning/)
