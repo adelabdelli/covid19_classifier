@@ -10,6 +10,12 @@ The used CNN architecture is the [SqueezeNet](https://arxiv.org/abs/1602.07360).
 2- Tensorflow
 3- Numpy
 
+# INSTALLATION
+    pip install -r requirements.txt
+    
+# USAGE
+    python train_squeezenet.py
+    
 # Classification Report
 
               precision    recall  f1-score   support
