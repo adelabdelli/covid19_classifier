@@ -1,0 +1,346 @@
+Model: "model_1"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            (None, 224, 224, 3)  0                                            
+__________________________________________________________________________________________________
+conv1 (Conv2D)                  (None, 111, 111, 64) 1792        input_1[0][0]                    
+__________________________________________________________________________________________________
+relu_conv1 (Activation)         (None, 111, 111, 64) 0           conv1[0][0]                      
+__________________________________________________________________________________________________
+pool1 (MaxPooling2D)            (None, 55, 55, 64)   0           relu_conv1[0][0]                 
+__________________________________________________________________________________________________
+fire2/squeeze1x1 (Conv2D)       (None, 55, 55, 16)   1040        pool1[0][0]                      
+__________________________________________________________________________________________________
+fire2/relu_squeeze1x1 (Activati (None, 55, 55, 16)   0           fire2/squeeze1x1[0][0]           
+__________________________________________________________________________________________________
+fire2/expand1x1 (Conv2D)        (None, 55, 55, 64)   1088        fire2/relu_squeeze1x1[0][0]      
+__________________________________________________________________________________________________
+fire2/expand3x3 (Conv2D)        (None, 55, 55, 64)   9280        fire2/relu_squeeze1x1[0][0]      
+__________________________________________________________________________________________________
+fire2/relu_expand1x1 (Activatio (None, 55, 55, 64)   0           fire2/expand1x1[0][0]            
+__________________________________________________________________________________________________
+fire2/relu_expand3x3 (Activatio (None, 55, 55, 64)   0           fire2/expand3x3[0][0]            
+__________________________________________________________________________________________________
+fire2/concat (Concatenate)      (None, 55, 55, 128)  0           fire2/relu_expand1x1[0][0]       
+                                                                 fire2/relu_expand3x3[0][0]       
+__________________________________________________________________________________________________
+fire3/squeeze1x1 (Conv2D)       (None, 55, 55, 16)   2064        fire2/concat[0][0]               
+__________________________________________________________________________________________________
+fire3/relu_squeeze1x1 (Activati (None, 55, 55, 16)   0           fire3/squeeze1x1[0][0]           
+__________________________________________________________________________________________________
+fire3/expand1x1 (Conv2D)        (None, 55, 55, 64)   1088        fire3/relu_squeeze1x1[0][0]      
+__________________________________________________________________________________________________
+fire3/expand3x3 (Conv2D)        (None, 55, 55, 64)   9280        fire3/relu_squeeze1x1[0][0]      
+__________________________________________________________________________________________________
+fire3/relu_expand1x1 (Activatio (None, 55, 55, 64)   0           fire3/expand1x1[0][0]            
+__________________________________________________________________________________________________
+fire3/relu_expand3x3 (Activatio (None, 55, 55, 64)   0           fire3/expand3x3[0][0]            
+__________________________________________________________________________________________________
+fire3/concat (Concatenate)      (None, 55, 55, 128)  0           fire3/relu_expand1x1[0][0]       
+                                                                 fire3/relu_expand3x3[0][0]       
+__________________________________________________________________________________________________
+pool3 (MaxPooling2D)            (None, 27, 27, 128)  0           fire3/concat[0][0]               
+__________________________________________________________________________________________________
+fire4/squeeze1x1 (Conv2D)       (None, 27, 27, 32)   4128        pool3[0][0]                      
+__________________________________________________________________________________________________
+fire4/relu_squeeze1x1 (Activati (None, 27, 27, 32)   0           fire4/squeeze1x1[0][0]           
+__________________________________________________________________________________________________
+fire4/expand1x1 (Conv2D)        (None, 27, 27, 128)  4224        fire4/relu_squeeze1x1[0][0]      
+__________________________________________________________________________________________________
+fire4/expand3x3 (Conv2D)        (None, 27, 27, 128)  36992       fire4/relu_squeeze1x1[0][0]      
+__________________________________________________________________________________________________
+fire4/relu_expand1x1 (Activatio (None, 27, 27, 128)  0           fire4/expand1x1[0][0]            
+__________________________________________________________________________________________________
+fire4/relu_expand3x3 (Activatio (None, 27, 27, 128)  0           fire4/expand3x3[0][0]            
+__________________________________________________________________________________________________
+fire4/concat (Concatenate)      (None, 27, 27, 256)  0           fire4/relu_expand1x1[0][0]       
+                                                                 fire4/relu_expand3x3[0][0]       
+__________________________________________________________________________________________________
+fire5/squeeze1x1 (Conv2D)       (None, 27, 27, 32)   8224        fire4/concat[0][0]               
+__________________________________________________________________________________________________
+fire5/relu_squeeze1x1 (Activati (None, 27, 27, 32)   0           fire5/squeeze1x1[0][0]           
+__________________________________________________________________________________________________
+fire5/expand1x1 (Conv2D)        (None, 27, 27, 128)  4224        fire5/relu_squeeze1x1[0][0]      
+__________________________________________________________________________________________________
+fire5/expand3x3 (Conv2D)        (None, 27, 27, 128)  36992       fire5/relu_squeeze1x1[0][0]      
+__________________________________________________________________________________________________
+fire5/relu_expand1x1 (Activatio (None, 27, 27, 128)  0           fire5/expand1x1[0][0]            
+__________________________________________________________________________________________________
+fire5/relu_expand3x3 (Activatio (None, 27, 27, 128)  0           fire5/expand3x3[0][0]            
+__________________________________________________________________________________________________
+fire5/concat (Concatenate)      (None, 27, 27, 256)  0           fire5/relu_expand1x1[0][0]       
+                                                                 fire5/relu_expand3x3[0][0]       
+__________________________________________________________________________________________________
+pool5 (MaxPooling2D)            (None, 13, 13, 256)  0           fire5/concat[0][0]               
+__________________________________________________________________________________________________
+fire6/squeeze1x1 (Conv2D)       (None, 13, 13, 48)   12336       pool5[0][0]                      
+__________________________________________________________________________________________________
+fire6/relu_squeeze1x1 (Activati (None, 13, 13, 48)   0           fire6/squeeze1x1[0][0]           
+__________________________________________________________________________________________________
+fire6/expand1x1 (Conv2D)        (None, 13, 13, 192)  9408        fire6/relu_squeeze1x1[0][0]      
+__________________________________________________________________________________________________
+fire6/expand3x3 (Conv2D)        (None, 13, 13, 192)  83136       fire6/relu_squeeze1x1[0][0]      
+__________________________________________________________________________________________________
+fire6/relu_expand1x1 (Activatio (None, 13, 13, 192)  0           fire6/expand1x1[0][0]            
+__________________________________________________________________________________________________
+fire6/relu_expand3x3 (Activatio (None, 13, 13, 192)  0           fire6/expand3x3[0][0]            
+__________________________________________________________________________________________________
+fire6/concat (Concatenate)      (None, 13, 13, 384)  0           fire6/relu_expand1x1[0][0]       
+                                                                 fire6/relu_expand3x3[0][0]       
+__________________________________________________________________________________________________
+fire7/squeeze1x1 (Conv2D)       (None, 13, 13, 48)   18480       fire6/concat[0][0]               
+__________________________________________________________________________________________________
+fire7/relu_squeeze1x1 (Activati (None, 13, 13, 48)   0           fire7/squeeze1x1[0][0]           
+__________________________________________________________________________________________________
+fire7/expand1x1 (Conv2D)        (None, 13, 13, 192)  9408        fire7/relu_squeeze1x1[0][0]      
+__________________________________________________________________________________________________
+fire7/expand3x3 (Conv2D)        (None, 13, 13, 192)  83136       fire7/relu_squeeze1x1[0][0]      
+__________________________________________________________________________________________________
+fire7/relu_expand1x1 (Activatio (None, 13, 13, 192)  0           fire7/expand1x1[0][0]            
+__________________________________________________________________________________________________
+fire7/relu_expand3x3 (Activatio (None, 13, 13, 192)  0           fire7/expand3x3[0][0]            
+__________________________________________________________________________________________________
+fire7/concat (Concatenate)      (None, 13, 13, 384)  0           fire7/relu_expand1x1[0][0]       
+                                                                 fire7/relu_expand3x3[0][0]       
+__________________________________________________________________________________________________
+fire8/squeeze1x1 (Conv2D)       (None, 13, 13, 64)   24640       fire7/concat[0][0]               
+__________________________________________________________________________________________________
+fire8/relu_squeeze1x1 (Activati (None, 13, 13, 64)   0           fire8/squeeze1x1[0][0]           
+__________________________________________________________________________________________________
+fire8/expand1x1 (Conv2D)        (None, 13, 13, 256)  16640       fire8/relu_squeeze1x1[0][0]      
+__________________________________________________________________________________________________
+fire8/expand3x3 (Conv2D)        (None, 13, 13, 256)  147712      fire8/relu_squeeze1x1[0][0]      
+__________________________________________________________________________________________________
+fire8/relu_expand1x1 (Activatio (None, 13, 13, 256)  0           fire8/expand1x1[0][0]            
+__________________________________________________________________________________________________
+fire8/relu_expand3x3 (Activatio (None, 13, 13, 256)  0           fire8/expand3x3[0][0]            
+__________________________________________________________________________________________________
+fire8/concat (Concatenate)      (None, 13, 13, 512)  0           fire8/relu_expand1x1[0][0]       
+                                                                 fire8/relu_expand3x3[0][0]       
+__________________________________________________________________________________________________
+fire9/squeeze1x1 (Conv2D)       (None, 13, 13, 64)   32832       fire8/concat[0][0]               
+__________________________________________________________________________________________________
+fire9/relu_squeeze1x1 (Activati (None, 13, 13, 64)   0           fire9/squeeze1x1[0][0]           
+__________________________________________________________________________________________________
+fire9/expand1x1 (Conv2D)        (None, 13, 13, 256)  16640       fire9/relu_squeeze1x1[0][0]      
+__________________________________________________________________________________________________
+fire9/expand3x3 (Conv2D)        (None, 13, 13, 256)  147712      fire9/relu_squeeze1x1[0][0]      
+__________________________________________________________________________________________________
+fire9/relu_expand1x1 (Activatio (None, 13, 13, 256)  0           fire9/expand1x1[0][0]            
+__________________________________________________________________________________________________
+fire9/relu_expand3x3 (Activatio (None, 13, 13, 256)  0           fire9/expand3x3[0][0]            
+__________________________________________________________________________________________________
+fire9/concat (Concatenate)      (None, 13, 13, 512)  0           fire9/relu_expand1x1[0][0]       
+                                                                 fire9/relu_expand3x3[0][0]       
+__________________________________________________________________________________________________
+global_average_pooling2d_1 (Glo (None, 512)          0           fire9/concat[0][0]               
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 2)            1026        global_average_pooling2d_1[0][0] 
+==================================================================================================
+Total params: 723,522
+Trainable params: 723,522
+Non-trainable params: 0
+__________________________________________________________________________________________________
+Found 34 images belonging to 2 classes.
+Found 16 images belonging to 2 classes.
+Epoch 1/100
+ - 2s - loss: 2.0553 - accuracy: 0.5000 - val_loss: 1.6021 - val_accuracy: 0.5000
+Epoch 2/100
+ - 1s - loss: 1.3797 - accuracy: 0.3235 - val_loss: 1.1402 - val_accuracy: 0.5000
+Epoch 3/100
+ - 1s - loss: 1.6224 - accuracy: 0.5000 - val_loss: 1.2517 - val_accuracy: 0.5000
+Epoch 4/100
+ - 1s - loss: 1.0929 - accuracy: 0.5000 - val_loss: 0.7612 - val_accuracy: 0.5000
+Epoch 5/100
+ - 3s - loss: 0.7174 - accuracy: 0.4412 - val_loss: 0.7764 - val_accuracy: 0.5000
+Epoch 6/100
+ - 1s - loss: 0.8161 - accuracy: 0.5000 - val_loss: 0.8504 - val_accuracy: 0.5000
+Epoch 7/100
+ - 1s - loss: 0.8253 - accuracy: 0.5000 - val_loss: 0.7354 - val_accuracy: 0.5000
+Epoch 8/100
+ - 1s - loss: 0.7457 - accuracy: 0.5588 - val_loss: 0.7486 - val_accuracy: 0.5000
+Epoch 9/100
+ - 1s - loss: 0.7762 - accuracy: 0.5000 - val_loss: 0.8871 - val_accuracy: 0.5000
+Epoch 10/100
+ - 1s - loss: 0.9045 - accuracy: 0.5000 - val_loss: 0.7635 - val_accuracy: 0.5000
+Epoch 11/100
+ - 2s - loss: 0.6945 - accuracy: 0.5000 - val_loss: 0.6922 - val_accuracy: 0.5000
+Epoch 12/100
+ - 1s - loss: 0.6904 - accuracy: 0.5000 - val_loss: 0.7448 - val_accuracy: 0.5000
+Epoch 13/100
+ - 1s - loss: 0.7642 - accuracy: 0.5000 - val_loss: 0.7049 - val_accuracy: 0.5000
+Epoch 14/100
+ - 2s - loss: 0.7097 - accuracy: 0.5588 - val_loss: 0.6777 - val_accuracy: 0.5625
+Epoch 15/100
+ - 2s - loss: 0.7036 - accuracy: 0.5294 - val_loss: 0.7245 - val_accuracy: 0.5000
+Epoch 16/100
+ - 1s - loss: 0.7369 - accuracy: 0.5000 - val_loss: 0.6679 - val_accuracy: 0.5625
+Epoch 17/100
+ - 2s - loss: 0.6757 - accuracy: 0.5588 - val_loss: 0.6735 - val_accuracy: 0.5000
+Epoch 18/100
+ - 2s - loss: 0.6628 - accuracy: 0.5294 - val_loss: 0.6536 - val_accuracy: 0.6250
+Epoch 19/100
+ - 1s - loss: 0.5975 - accuracy: 0.5882 - val_loss: 0.6387 - val_accuracy: 0.7500
+Epoch 20/100
+ - 1s - loss: 0.6245 - accuracy: 0.7059 - val_loss: 0.6302 - val_accuracy: 0.5625
+Epoch 21/100
+ - 1s - loss: 0.5737 - accuracy: 0.7353 - val_loss: 0.6641 - val_accuracy: 0.5625
+Epoch 22/100
+ - 2s - loss: 0.5659 - accuracy: 0.6471 - val_loss: 0.6339 - val_accuracy: 0.5625
+Epoch 23/100
+ - 2s - loss: 0.6242 - accuracy: 0.6176 - val_loss: 0.5689 - val_accuracy: 0.7500
+Epoch 24/100
+ - 1s - loss: 0.5159 - accuracy: 0.7941 - val_loss: 0.5483 - val_accuracy: 0.7500
+Epoch 25/100
+ - 1s - loss: 0.4777 - accuracy: 0.7059 - val_loss: 0.5635 - val_accuracy: 0.7500
+Epoch 26/100
+ - 1s - loss: 0.4420 - accuracy: 0.7647 - val_loss: 0.6305 - val_accuracy: 0.5625
+Epoch 27/100
+ - 1s - loss: 0.4497 - accuracy: 0.8235 - val_loss: 0.5176 - val_accuracy: 0.8125
+Epoch 28/100
+ - 2s - loss: 0.5448 - accuracy: 0.7353 - val_loss: 0.4610 - val_accuracy: 0.7500
+Epoch 29/100
+ - 2s - loss: 0.7799 - accuracy: 0.6765 - val_loss: 0.5774 - val_accuracy: 0.7500
+Epoch 30/100
+ - 2s - loss: 0.5091 - accuracy: 0.7353 - val_loss: 1.1988 - val_accuracy: 0.5000
+Epoch 31/100
+ - 1s - loss: 0.7477 - accuracy: 0.7647 - val_loss: 0.4835 - val_accuracy: 0.8125
+Epoch 32/100
+ - 1s - loss: 0.5605 - accuracy: 0.9118 - val_loss: 0.4576 - val_accuracy: 0.7500
+Epoch 33/100
+ - 2s - loss: 0.4265 - accuracy: 0.7059 - val_loss: 0.4147 - val_accuracy: 0.8125
+Epoch 34/100
+ - 2s - loss: 0.3520 - accuracy: 0.8824 - val_loss: 0.4084 - val_accuracy: 0.8125
+Epoch 35/100
+ - 1s - loss: 0.3315 - accuracy: 0.9412 - val_loss: 0.3892 - val_accuracy: 0.8750
+Epoch 36/100
+ - 2s - loss: 0.3228 - accuracy: 0.9412 - val_loss: 0.3808 - val_accuracy: 0.8750
+Epoch 37/100
+ - 1s - loss: 0.2672 - accuracy: 0.9706 - val_loss: 0.3614 - val_accuracy: 0.8750
+Epoch 38/100
+ - 1s - loss: 0.3492 - accuracy: 0.9412 - val_loss: 0.3483 - val_accuracy: 0.7500
+Epoch 39/100
+ - 2s - loss: 0.2463 - accuracy: 0.9412 - val_loss: 0.3308 - val_accuracy: 0.7500
+Epoch 40/100
+ - 2s - loss: 0.2086 - accuracy: 0.9412 - val_loss: 0.3115 - val_accuracy: 0.7500
+Epoch 41/100
+ - 1s - loss: 0.1853 - accuracy: 1.0000 - val_loss: 0.2914 - val_accuracy: 0.8125
+Epoch 42/100
+ - 2s - loss: 0.1733 - accuracy: 0.9706 - val_loss: 0.3062 - val_accuracy: 0.8750
+Epoch 43/100
+ - 1s - loss: 0.1462 - accuracy: 0.9706 - val_loss: 0.3463 - val_accuracy: 0.8750
+Epoch 44/100
+ - 1s - loss: 0.1114 - accuracy: 0.9706 - val_loss: 0.3197 - val_accuracy: 0.8750
+Epoch 45/100
+ - 2s - loss: 0.2238 - accuracy: 0.9412 - val_loss: 0.2410 - val_accuracy: 0.8750
+Epoch 46/100
+ - 2s - loss: 0.1343 - accuracy: 0.9412 - val_loss: 0.2462 - val_accuracy: 0.8750
+Epoch 47/100
+ - 1s - loss: 0.0554 - accuracy: 1.0000 - val_loss: 0.1632 - val_accuracy: 0.9375
+Epoch 48/100
+ - 1s - loss: 0.0708 - accuracy: 1.0000 - val_loss: 0.1642 - val_accuracy: 0.9375
+Epoch 49/100
+ - 1s - loss: 0.1160 - accuracy: 0.9412 - val_loss: 0.1410 - val_accuracy: 0.9375
+Epoch 50/100
+ - 2s - loss: 0.1150 - accuracy: 0.9706 - val_loss: 0.2589 - val_accuracy: 0.8750
+Epoch 51/100
+ - 1s - loss: 0.0781 - accuracy: 1.0000 - val_loss: 0.1970 - val_accuracy: 0.9375
+Epoch 52/100
+ - 1s - loss: 0.1390 - accuracy: 0.9706 - val_loss: 0.1623 - val_accuracy: 0.9375
+Epoch 53/100
+ - 1s - loss: 0.0783 - accuracy: 0.9706 - val_loss: 0.1141 - val_accuracy: 0.9375
+Epoch 54/100
+ - 1s - loss: 0.0933 - accuracy: 0.9706 - val_loss: 0.0972 - val_accuracy: 0.9375
+Epoch 55/100
+ - 2s - loss: 0.0221 - accuracy: 1.0000 - val_loss: 0.2175 - val_accuracy: 0.8750
+Epoch 56/100
+ - 2s - loss: 0.1848 - accuracy: 0.9412 - val_loss: 0.1266 - val_accuracy: 0.9375
+Epoch 57/100
+ - 1s - loss: 0.0945 - accuracy: 0.9412 - val_loss: 0.0805 - val_accuracy: 1.0000
+Epoch 58/100
+ - 1s - loss: 0.0430 - accuracy: 0.9706 - val_loss: 0.2679 - val_accuracy: 0.8750
+Epoch 59/100
+ - 2s - loss: 0.0414 - accuracy: 0.9706 - val_loss: 0.5205 - val_accuracy: 0.8125
+Epoch 60/100
+ - 4s - loss: 0.0493 - accuracy: 1.0000 - val_loss: 0.1051 - val_accuracy: 0.9375
+Epoch 61/100
+ - 2s - loss: 0.0419 - accuracy: 1.0000 - val_loss: 0.0627 - val_accuracy: 1.0000
+Epoch 62/100
+ - 1s - loss: 0.0176 - accuracy: 1.0000 - val_loss: 0.0555 - val_accuracy: 1.0000
+Epoch 63/100
+ - 2s - loss: 0.0136 - accuracy: 1.0000 - val_loss: 0.0654 - val_accuracy: 1.0000
+Epoch 64/100
+ - 1s - loss: 0.0090 - accuracy: 1.0000 - val_loss: 0.0718 - val_accuracy: 0.9375
+Epoch 65/100
+ - 2s - loss: 0.0138 - accuracy: 1.0000 - val_loss: 0.0588 - val_accuracy: 1.0000
+Epoch 66/100
+ - 3s - loss: 0.0083 - accuracy: 1.0000 - val_loss: 0.0825 - val_accuracy: 1.0000
+Epoch 67/100
+ - 1s - loss: 0.0153 - accuracy: 1.0000 - val_loss: 0.1375 - val_accuracy: 0.8750
+Epoch 68/100
+ - 1s - loss: 0.0034 - accuracy: 1.0000 - val_loss: 0.0952 - val_accuracy: 0.9375
+Epoch 69/100
+ - 2s - loss: 0.0268 - accuracy: 0.9706 - val_loss: 0.0596 - val_accuracy: 1.0000
+Epoch 70/100
+ - 1s - loss: 0.0077 - accuracy: 1.0000 - val_loss: 0.0587 - val_accuracy: 1.0000
+Epoch 71/100
+ - 3s - loss: 0.0028 - accuracy: 1.0000 - val_loss: 0.0597 - val_accuracy: 1.0000
+Epoch 72/100
+ - 2s - loss: 0.0060 - accuracy: 1.0000 - val_loss: 0.0904 - val_accuracy: 0.9375
+Epoch 73/100
+ - 1s - loss: 0.0029 - accuracy: 1.0000 - val_loss: 0.1381 - val_accuracy: 0.9375
+Epoch 74/100
+ - 1s - loss: 0.0032 - accuracy: 1.0000 - val_loss: 0.1933 - val_accuracy: 0.9375
+Epoch 75/100
+ - 1s - loss: 0.0195 - accuracy: 1.0000 - val_loss: 0.3424 - val_accuracy: 0.8125
+Epoch 76/100
+ - 3s - loss: 0.0086 - accuracy: 1.0000 - val_loss: 0.3307 - val_accuracy: 0.8125
+Epoch 77/100
+ - 1s - loss: 0.0046 - accuracy: 1.0000 - val_loss: 0.2757 - val_accuracy: 0.8750
+Epoch 78/100
+ - 1s - loss: 0.0109 - accuracy: 1.0000 - val_loss: 0.1222 - val_accuracy: 0.9375
+Epoch 79/100
+ - 1s - loss: 0.0026 - accuracy: 1.0000 - val_loss: 0.0629 - val_accuracy: 1.0000
+Epoch 80/100
+ - 1s - loss: 0.0013 - accuracy: 1.0000 - val_loss: 0.0574 - val_accuracy: 1.0000
+Epoch 81/100
+ - 2s - loss: 0.0011 - accuracy: 1.0000 - val_loss: 0.0728 - val_accuracy: 1.0000
+Epoch 82/100
+ - 2s - loss: 0.0106 - accuracy: 1.0000 - val_loss: 0.0639 - val_accuracy: 1.0000
+Epoch 83/100
+ - 1s - loss: 0.0019 - accuracy: 1.0000 - val_loss: 0.0540 - val_accuracy: 1.0000
+Epoch 84/100
+ - 1s - loss: 0.0077 - accuracy: 1.0000 - val_loss: 0.0590 - val_accuracy: 1.0000
+Epoch 85/100
+ - 1s - loss: 0.0012 - accuracy: 1.0000 - val_loss: 0.0820 - val_accuracy: 0.9375
+Epoch 86/100
+ - 1s - loss: 0.0015 - accuracy: 1.0000 - val_loss: 0.1065 - val_accuracy: 0.9375
+Epoch 87/100
+ - 4s - loss: 0.0017 - accuracy: 1.0000 - val_loss: 0.1273 - val_accuracy: 0.9375
+Epoch 88/100
+ - 2s - loss: 0.0036 - accuracy: 1.0000 - val_loss: 0.1328 - val_accuracy: 0.9375
+Epoch 89/100
+ - 1s - loss: 0.0085 - accuracy: 1.0000 - val_loss: 0.1036 - val_accuracy: 0.9375
+Epoch 90/100
+ - 1s - loss: 0.0032 - accuracy: 1.0000 - val_loss: 0.0804 - val_accuracy: 0.9375
+Epoch 91/100
+ - 2s - loss: 0.0019 - accuracy: 1.0000 - val_loss: 0.0655 - val_accuracy: 0.9375
+Epoch 92/100
+ - 4s - loss: 0.0020 - accuracy: 1.0000 - val_loss: 0.0582 - val_accuracy: 1.0000
+Epoch 93/100
+ - 1s - loss: 5.5044e-04 - accuracy: 1.0000 - val_loss: 0.0555 - val_accuracy: 1.0000
+Epoch 94/100
+ - 2s - loss: 0.0013 - accuracy: 1.0000 - val_loss: 0.0551 - val_accuracy: 1.0000
+Epoch 95/100
+ - 2s - loss: 0.0077 - accuracy: 1.0000 - val_loss: 0.0586 - val_accuracy: 1.0000
+Epoch 96/100
+ - 1s - loss: 0.0021 - accuracy: 1.0000 - val_loss: 0.0642 - val_accuracy: 0.9375
+Epoch 97/100
+ - 4s - loss: 0.0019 - accuracy: 1.0000 - val_loss: 0.0694 - val_accuracy: 0.9375
+Epoch 98/100
+ - 2s - loss: 0.0013 - accuracy: 1.0000 - val_loss: 0.0735 - val_accuracy: 0.9375
+Epoch 99/100
+ - 2s - loss: 0.0014 - accuracy: 1.0000 - val_loss: 0.0787 - val_accuracy: 0.9375
+Epoch 100/100
+ - 2s - loss: 0.0046 - accuracy: 1.0000 - val_loss: 0.0788 - val_accuracy: 0.9375
