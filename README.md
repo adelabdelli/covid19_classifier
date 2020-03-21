@@ -25,8 +25,8 @@ The used CNN architecture is the [SqueezeNet](https://arxiv.org/abs/1602.07360).
        covid     1.0000    1.0000    1.0000         8
       normal     1.0000    1.0000    1.0000         8
 
-   micro avg     1.0000    1.0000    1.0000        16
-   macro avg     1.0000    1.0000    1.0000        16
-weighted avg     1.0000    1.0000    1.0000        16
+       micro avg     1.0000    1.0000    1.0000        16
+       macro avg     1.0000    1.0000    1.0000        16
+       weighted avg     1.0000    1.0000    1.0000        16
 
 # P.S This repository is not for professional use, it needs more examples, more than 1000 to make it somehow sure.
